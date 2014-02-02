@@ -37,6 +37,23 @@ module.exports = function(grunt, o, allDone) {
 		args.push('--ligatures');
 	}
 
+	if (o.fontMetrics) {
+		var m = o.fontMetrics;
+
+		if (m.designSize) {
+			args.push('--size=' + m.designSize);
+		}
+		if (m.em) {
+			args.push('--em=' + m.em);
+		}
+		if (m.ascent) {
+			args.push('--ascent='+ m.ascent);
+		}
+		if (m.descent) {
+			args.push('--descent=' + m.descent);
+		}
+	}
+
 	grunt.util.spawn({
 		cmd: 'fontforge',
 		args: args

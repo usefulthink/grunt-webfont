@@ -269,6 +269,29 @@ If `true` the generated font files and stylesheets will be generated with openty
 
 For example, you have a heart icon in `love.svg` file. The HTML `<h1>I <span class="ligature-icons">love</span> you!</h1>` will be rendered as `I ♥ you!`.
 
+#### fontMetrics
+
+Type: `object` Default: `{}`
+
+You can specify options to customize the metrics of the generated fonts and adapt them to your svgs.
+
+``` javascript
+options: {
+	fontMetrics: {
+		designSize: 16,
+		em: 512,
+		ascender: 448,
+		descender: 64
+	}
+}
+```
+
+The settings in detail:
+
+ * `designSize`: the "crisp"-size of your fonts (the font-size in pixels for which the glyphs have been created).
+ * `em`: the em-height of the glyphs
+ * `ascender` and `descender` together define the baseline of the font, these values should sum up to the em-height.
+
 #### rename
 
 Type: `function` Default: `path.basename`

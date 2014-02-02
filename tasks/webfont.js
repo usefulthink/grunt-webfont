@@ -45,6 +45,7 @@ module.exports = function(grunt) {
 			relativeFontPath: options.relativeFontPath,
 			addHashes: options.hashes !== false,
 			addLigatures: options.ligatures === true,
+			fontMetrics: options.fontMetrics || {},
 			template: options.template,
 			syntax: options.syntax || 'bem',
 			templateOptions: options.templateOptions || {},

@@ -18,15 +18,20 @@ parser.add_argument('font', metavar='font', type=str, help='font name')
 parser.add_argument('types', metavar='types', type=lambda s: s.split(','), help='output types')
 parser.add_argument('--hashes', action='store_true', help='add hashes to file names')
 parser.add_argument('--ligatures', action='store_true', help='add opentype ligatures to generated font files')
+parser.add_argument('--size', type=int, default=16, help='the design- or crisp-size for the font (default: 16)')
+parser.add_argument('--em', type=int, default=512, help='em-height for the font (default: 512)')
+parser.add_argument('--ascent', type=int, default=448, help='height of the ascender of the font (default: 448)')
+parser.add_argument('--descent', type=int, default=64, help='height of the descender of the font (default: 64)')
+
 args = parser.parse_args()
 
 
 f = fontforge.font()
 f.encoding = 'UnicodeFull'
-f.design_size = 16
-f.em = 512
-f.ascent = 448
-f.descent = 64
+f.design_size = args.size or 16
+f.em = args.em or 512
+f.ascent = args.ascent or 448
+f.descent = args.descent or 64
 
 m = hashlib.md5()
 cp = 0xE001
